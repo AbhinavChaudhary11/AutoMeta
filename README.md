@@ -101,29 +101,6 @@ npm run dev
 
 The frontend will run on `http://localhost:3000`
 
-### 4. Get Your Gemini API Key
-
-1. Visit [Google AI Studio](https://makersuite.google.com/app/apikey)
-2. Sign in with your Google account
-3. Click "Create API Key"
-4. Copy the API key and add it to your `.env` file
-
-### 5. MongoDB Setup (Optional)
-
-If you want to save workflows:
-
-**Option A: MongoDB Atlas (Free Tier)**
-1. Go to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
-2. Create a free account
-3. Create a new cluster
-4. Create a database user
-5. Whitelist your IP address (or use `0.0.0.0/0` for development)
-6. Get your connection string and add it to `.env`
-
-**Option B: Local MongoDB**
-1. Install MongoDB locally
-2. Start MongoDB service
-3. Use connection string: `mongodb://localhost:27017/autometa`
 
 ## Usage
 
@@ -142,44 +119,6 @@ If you want to save workflows:
 3. **View History**:
    - Check the "History" tab to see saved workflows
    - Download or copy any previously saved workflow
-
-## API Endpoints
-
-### `POST /api/workflows/generate`
-Generate a workflow from a description.
-
-**Request Body:**
-```json
-{
-  "description": "Send an email notification when triggered"
-}
-```
-
-**Response:**
-```json
-{
-  "success": true,
-  "workflow": { /* n8n workflow JSON */ },
-  "message": "Workflow generated successfully"
-}
-```
-
-### `POST /api/workflows/save`
-Save a workflow to the database.
-
-**Request Body:**
-```json
-{
-  "description": "Email notification workflow",
-  "workflow": { /* n8n workflow JSON */ }
-}
-```
-
-### `GET /api/workflows`
-Get all saved workflows.
-
-### `GET /api/workflows/:id`
-Get a specific workflow by ID.
 
 ## Project Structure
 
@@ -214,33 +153,6 @@ Autometa/
 └── README.md
 ```
 
-## Troubleshooting
-
-### Backend Issues
-
-1. **"GEMINI_API_KEY not found"**
-   - Make sure you've created a `.env` file in the `backend` directory
-   - Verify your API key is correct
-
-2. **MongoDB Connection Error**
-   - Check your MongoDB connection string
-   - Ensure MongoDB is running (if using local instance)
-   - Verify network access (if using Atlas)
-
-3. **Port Already in Use**
-   - Change the `PORT` in `.env` to a different port
-   - Or stop the process using port 5000
-
-### Frontend Issues
-
-1. **Cannot Connect to Backend**
-   - Ensure the backend server is running on port 5000
-   - Check the proxy configuration in `vite.config.js`
-
-2. **Voice Input Not Working**
-   - Voice input requires Chrome or Edge browser
-   - Ensure microphone permissions are granted
-
 ## Development
 
 ### Backend Development
@@ -269,19 +181,4 @@ cd backend
 npm start
 ```
 
-## License
-
-MIT
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## Support
-
-For issues and questions, please open an issue on the repository.
-
----
-
-Built with ❤️ using React, Express, MongoDB, and Google Gemini AI
 
